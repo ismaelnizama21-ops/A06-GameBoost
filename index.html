@@ -115,6 +115,7 @@
     long:['Cuida la temperatura','Prioriza batería y temperatura; haz pausas si el dispositivo se calienta.']
   }[v];sessionAdvice.innerHTML='<strong>Perfil sugerido</strong><span class="pill">'+data[0]+'</span>';sessionText.textContent=data[1];}
   session.addEventListener('change',updateSession);
+  updateSession();
   document.getElementById('training').addEventListener('click',()=>{const p=document.getElementById('trainingResult');p.classList.remove('hidden');p.textContent='Plan: 1) Prueba tu ajuste actual. 2) Cambia solo la sensibilidad general un poco. 3) Haz 10 arrastres. 4) Guarda cuál se siente más controlable. Repite solo si hace falta.';});
   document.getElementById('saveTest').addEventListener('click',()=>{document.getElementById('testSummary').textContent='Resumen: mira: '+document.getElementById('aim').value+' · tacto: '+document.getElementById('touch').value+'. Este resumen no se guarda después de cerrar o recargar la página.';});
   document.getElementById('savePrefs').addEventListener('click',()=>{const v=document.getElementById('priority').value;const msgs={balanced:'Perfil: Equilibrado. Recomendaciones balanceadas para batería, rendimiento y temperatura.',fps:'Perfil: Fluidez. Prioriza FPS estables y reduce efectos si notas tirones.',touch:'Perfil: Precisión. Prioriza controles cómodos y pruebas graduales de sensibilidad.'};document.getElementById('prefText').textContent=msgs[v];});
