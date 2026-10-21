@@ -109,14 +109,50 @@
 <script>
   const tabs=[...document.querySelectorAll('.tab')], views=[...document.querySelectorAll('.view')];
   tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===b));views.forEach(v=>v.classList.toggle('hidden',v.id!==b.dataset.tab));}));
-  const session=document.getElementById('session'), sessionText=document.getElementById('sessionText'), sessionAdvice=document.getElementById('sessionAdvice');
-  function updateSession(){const v=session.value;const data={
-    normal:['Equilibrado','Usa gráficos suaves si notas tirones y elige una tasa de FPS estable.'],
-    competitive:['Prioriza estabilidad','Reduce efectos si hay tirones y evita grabaciones innecesarias en segundo plano.'],
-    long:['Cuida la temperatura','Prioriza batería y temperatura; haz pausas si el dispositivo se calienta.']
-  }[v];sessionAdvice.innerHTML='<strong>Perfil sugerido</strong><span class="pill">'+data[0]+'</span>';sessionText.textContent=data[1];}
-  session.addEventListener('change',updateSession);
-  updateSession();
+
+  
+const session = document.getElementById('session');
+const sessionText = document.getElementById('sessionText');
+const sessionAdvice = document.getElementById('sessionAdvice');
+
+function updateSession() {
+  const profiles = {
+    normal: [
+      'Equilibrado',
+      'Usa gráficos suaves si notas tirones y elige una tasa de FPS estable.'
+    ],
+    competitive: [
+      'Prioriza estabilidad',
+      'Reduce efectos si hay tirones y evita grabaciones innecesarias en segundo plano.'
+    ],
+    freefire: [
+      'Free Fire - rendimiento',
+      'Prueba gráficos Suave y la tasa de FPS más alta que el juego permita mantener estable. Cierra descargas y evita jugar mientras el teléfono se calienta.'
+    ],
+    long: [
+      'Cuida la temperatura',
+      'Prioriza batería y temperatura. Haz pausas si el dispositivo se calienta.'
+    ]
+  };
+
+  const data = profiles[session.value] || profiles.normal;
+
+  sessionAdvice.replaceChildren();
+
+  const title = document.createElement('strong');
+  title.textContent = 'Perfil sugerido';
+
+  const pill = document.createElement('span');
+  pill.className = 'pill';
+  pill.textContent = data[0];
+
+  sessionAdvice.append(title, pill);
+  sessionText.textContent = data[1];
+}
+
+session.addEventListener('change', updateSession);
+updateSession();
+
   document.getElementById('training').addEventListener('click',()=>{const p=document.getElementById('trainingResult');p.classList.remove('hidden');p.textContent='Plan: 1) Prueba tu ajuste actual. 2) Cambia solo la sensibilidad general un poco. 3) Haz 10 arrastres. 4) Guarda cuál se siente más controlable. Repite solo si hace falta.';});
   document.getElementById('saveTest').addEventListener('click',()=>{document.getElementById('testSummary').textContent='Resumen: mira: '+document.getElementById('aim').value+' · tacto: '+document.getElementById('touch').value+'. Este resumen no se guarda después de cerrar o recargar la página.';});
   document.getElementById('savePrefs').addEventListener('click',()=>{const v=document.getElementById('priority').value;const msgs={balanced:'Perfil: Equilibrado. Recomendaciones balanceadas para batería, rendimiento y temperatura.',fps:'Perfil: Fluidez. Prioriza FPS estables y reduce efectos si notas tirones.',touch:'Perfil: Precisión. Prioriza controles cómodos y pruebas graduales de sensibilidad.'};document.getElementById('prefText').textContent=msgs[v];});
