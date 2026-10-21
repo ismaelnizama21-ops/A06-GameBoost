@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="Panel de recomendaciones de juego para Samsung Galaxy A06.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <title>A06 GameBoost</title>
+  <style>
+    :root{color-scheme:dark;--bg:#080b12;--panel:#111723;--line:#263044;--green:#39f5a5;--muted:#a3b4c9;--white:#eef3fa}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#12221f 0,#080b12 48%);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}
+    header{padding:24px 18px 12px;max-width:760px;margin:auto}h1{font-size:25px;letter-spacing:1px;color:var(--green);margin:0}header p{font-size:11px;letter-spacing:1.5px;color:var(--muted);margin:5px 0 0}
+    main{max-width:760px;margin:auto;padding:8px 16px 100px}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0 18px}.tab{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:12px 4px;color:var(--muted);font-weight:650;font-size:12px}.tab.active{border-color:var(--green);color:var(--green);background:#16362d}
+    .card{background:linear-gradient(145deg,#141c2a,#101520);border:1px solid #202b3d;border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 8px 28px #0003}.eyebrow{font-size:11px;color:var(--green);font-weight:800;letter-spacing:1.3px}.card h2{font-size:20px;margin:7px 0 9px}.card h3{font-size:16px;margin:0 0 7px}.card p,.muted{color:var(--muted);line-height:1.5;font-size:14px}.metric{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #263044}.metric:last-child{border-bottom:0}.metric strong{font-size:14px}.pill{border-radius:999px;background:#1c2b31;color:var(--green);padding:5px 9px;font-size:11px;font-weight:700}
+    button,select{font:inherit}button.primary,button.secondary{border:0;border-radius:14px;padding:13px 14px;font-weight:750;width:100%;margin-top:8px}button.primary{background:var(--green);color:#07110d}button.secondary{background:#253044;color:var(--white)}button:focus-visible,select:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+    label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:#0c111b;color:var(--white)}.notice{font-size:12px!important;color:#9caec4!important}.checkrow{display:flex;gap:10px;align-items:flex-start;margin:12px 0;color:var(--white);font-size:14px}.checkrow input{accent-color:var(--green);width:18px;height:18px;margin-top:1px}.hidden{display:none!important}footer{max-width:760px;margin:auto;padding:0 18px 28px;color:#71829a;font-size:11px;line-height:1.5}
+    @media(min-width:600px){main{padding-left:22px;padding-right:22px}.tabs{gap:10px}.tab{font-size:14px}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>⚡ A06 GAMEBOOST</h1>
+  <p>RENDIMIENTO · CONTROL · EQUILIBRIO</p>
+</header>
+<main>
+  <nav class="tabs" aria-label="Módulos">
+    <button class="tab active" data-tab="home">⌂ Panel</button>
+    <button class="tab" data-tab="freefire">◎ Free Fire</button>
+    <button class="tab" data-tab="system">▣ Sistema</button>
+    <button class="tab" data-tab="prefs">☷ Perfil</button>
+  </nav>
+
+  <section id="home" class="view">
+    <div class="card">
+      <span class="eyebrow">CENTRO DE JUEGO</span>
+      <h2>Tu sesión, a tu manera.</h2>
+      <p>Recomendaciones para tu Galaxy A06 que buscan equilibrar fluidez, batería y temperatura.</p>
+      <label for="session">¿Qué tipo de sesión vas a jugar?</label>
+      <select id="session">
+        <option value="normal">Partida normal</option>
+        <option value="competitive">Partida competitiva</option>
+        <option value="long">Sesión larga</option>
+      </select>
+      <div id="sessionAdvice" class="metric"><strong>Perfil sugerido</strong><span class="pill">Equilibrado</span></div>
+      <p id="sessionText">Usa gráficos suaves si notas tirones y elige una tasa de FPS estable.</p>
+    </div>
+    <div class="card">
+      <span class="eyebrow">PREPARACIÓN RÁPIDA</span>
+      <h3>Antes de abrir el juego</h3>
+      <label class="checkrow"><input type="checkbox"> <span>Cierra descargas que no necesites.</span></label>
+      <label class="checkrow"><input type="checkbox"> <span>Evita jugar bajo el sol directo.</span></label>
+      <label class="checkrow"><input type="checkbox"> <span>Comprueba que tengas espacio libre.</span></label>
+      <label class="checkrow"><input type="checkbox"> <span>Si el teléfono se calienta demasiado, haz una pausa.</span></label>
+    </div>
+  </section>
+
+  <section id="freefire" class="view hidden">
+    <div class="card">
+      <span class="eyebrow">MÓDULO 02 · FREE FIRE</span><h2>Perfil para dos dedos</h2>
+      <div class="metric"><strong>Gráficos</strong><span class="pill">Suave para probar</span></div>
+      <p>Empieza con gráficos Suave si están disponibles. Elige una tasa de FPS estable que el propio juego permita.</p>
+      <div class="metric"><strong>Sensibilidad</strong><span class="pill">Personalizable</span></div>
+      <p>Cambia una opción cada vez y prueba arrastres cortos y largos en entrenamiento. No hay un valor perfecto para todos.</p>
+      <div class="metric"><strong>Botón de disparo</strong><span class="pill">A tu alcance</span></div>
+      <p>Colócalo donde llegue cómodamente tu dedo derecho, sin tapar demasiado la vista. Ajusta tamaño y posición dentro del juego.</p>
+      <button class="primary" id="training">Crear plan de prueba</button>
+      <p id="trainingResult" class="notice hidden"></p>
+    </div>
+    <div class="card"><h3>Registro de prueba</h3><p>Marca qué tal se siente cada ajuste después de probarlo en el campo de entrenamiento.</p>
+      <label for="aim">Movimiento de la mira</label><select id="aim"><option>Elegir...</option><option>Se pasa hacia arriba</option><option>Se queda corta</option><option>Se siente estable</option></select>
+      <label for="touch">Respuesta táctil</label><select id="touch"><option>Elegir...</option><option>Bien</option><option>Se siente lenta</option><option>Los dedos se traban</option></select>
+      <button class="secondary" id="saveTest">Guardar resumen en esta pantalla</button><p id="testSummary" class="notice"></p>
+    </div>
+  </section>
+
+  <section id="system" class="view hidden">
+    <div class="card"><span class="eyebrow">MÓDULO 03 · SISTEMA</span><h2>Equilibrio general</h2>
+      <h3>🔋 Batería</h3><p>Usa el ahorro de energía cuando priorices autonomía. Para jugar, comprueba si afecta a la fluidez o las notificaciones.</p>
+      <h3>🌡️ Temperatura</h3><p>Evita el sol directo y las sesiones intensas mientras carga si notas calor. Si Android muestra una advertencia térmica, detente y deja enfriar el móvil.</p>
+      <h3>▤ Almacenamiento</h3><p>Elimina descargas innecesarias y aplicaciones que no uses. Las aplicaciones de “limpieza de RAM” no garantizan más velocidad.</p>
+      <h3>⚙️ Segundo plano</h3><p>Revisa el consumo por aplicación en Ajustes. No fuerces la detención de procesos del sistema.</p>
+      <p class="notice">Como página web, esta herramienta no puede leer los sensores del móvil ni abrir automáticamente todos los ajustes de Android.</p>
+    </div>
+  </section>
+
+  <section id="prefs" class="view hidden">
+    <div class="card"><span class="eyebrow">PREFERENCIAS</span><h2>Tu perfil de juego</h2>
+      <label for="priority">Prioridad principal</label>
+      <select id="priority"><option value="balanced">Equilibrio entre batería, rendimiento y temperatura</option><option value="fps">Fluidez y FPS estables</option><option value="touch">Respuesta táctil y precisión</option></select>
+      <button class="primary" id="savePrefs">Aplicar a las recomendaciones</button>
+      <p id="prefText" class="notice">Perfil: Equilibrado. Esta elección solo cambia las recomendaciones dentro de la app.</p>
+      <button class="secondary" id="install" hidden>Instalar A06 GameBoost</button>
+      <p class="notice" id="installHint">La instalación aparecerá cuando abras esta página desde un sitio HTTPS compatible y el navegador cumpla los requisitos.</p>
+    </div>
+    <div class="card"><h3>Qué puede hacer esta versión</h3>
+      <div class="metric"><strong>Panel interactivo</strong><span class="pill">Funciona</span></div>
+      <div class="metric"><strong>Guardar selección durante la sesión</strong><span class="pill">Funciona</span></div>
+      <div class="metric"><strong>Modificar Free Fire</strong><span class="pill">No puede</span></div>
+      <div class="metric"><strong>Medir FPS o temperatura de CPU</strong><span class="pill">No puede</span></div>
+      <div class="metric"><strong>Cambiar ajustes Android</strong><span class="pill">No puede</span></div>
+    </div>
+  </section>
+</main>
+<footer>A06 GameBoost · Prototipo web. No solicita permisos especiales, no recopila datos ni envía información a servidores. Para instalarla como PWA debe publicarse en un sitio HTTPS compatible.</footer>
+<script>
+  const tabs=[...document.querySelectorAll('.tab')], views=[...document.querySelectorAll('.view')];
+  tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===b));views.forEach(v=>v.classList.toggle('hidden',v.id!==b.dataset.tab));}));
+  const session=document.getElementById('session'), sessionText=document.getElementById('sessionText'), sessionAdvice=document.getElementById('sessionAdvice');
+  function updateSession(){const v=session.value;const data={
+    normal:['Equilibrado','Usa gráficos suaves si notas tirones y elige una tasa de FPS estable.'],
+    competitive:['Prioriza estabilidad','Reduce efectos si hay tirones y evita grabaciones innecesarias en segundo plano.'],
+    long:['Cuida la temperatura','Prioriza batería y temperatura; haz pausas si el dispositivo se calienta.']
+  }[v];sessionAdvice.innerHTML='<strong>Perfil sugerido</strong><span class="pill">'+data[0]+'</span>';sessionText.textContent=data[1];}
+  session.addEventListener('change',updateSession);
+  document.getElementById('training').addEventListener('click',()=>{const p=document.getElementById('trainingResult');p.classList.remove('hidden');p.textContent='Plan: 1) Prueba tu ajuste actual. 2) Cambia solo la sensibilidad general un poco. 3) Haz 10 arrastres. 4) Guarda cuál se siente más controlable. Repite solo si hace falta.';});
+  document.getElementById('saveTest').addEventListener('click',()=>{document.getElementById('testSummary').textContent='Resumen: mira: '+document.getElementById('aim').value+' · tacto: '+document.getElementById('touch').value+'. Este resumen no se guarda después de cerrar o recargar la página.';});
+  document.getElementById('savePrefs').addEventListener('click',()=>{const v=document.getElementById('priority').value;const msgs={balanced:'Perfil: Equilibrado. Recomendaciones balanceadas para batería, rendimiento y temperatura.',fps:'Perfil: Fluidez. Prioriza FPS estables y reduce efectos si notas tirones.',touch:'Perfil: Precisión. Prioriza controles cómodos y pruebas graduales de sensibilidad.'};document.getElementById('prefText').textContent=msgs[v];});
+  let installPrompt=null;const installBtn=document.getElementById('install');
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;installBtn.hidden=false;});
+  installBtn.addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installBtn.hidden=true;});
+  if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body>
+</html>
